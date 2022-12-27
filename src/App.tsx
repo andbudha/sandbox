@@ -46,8 +46,8 @@ function App() {
         setTasks({...tasks, [todolistID]:[newTask, ...tasks[todolistID]]})
     }
 
-    function changeStatus(taskId: string, isDone: boolean) {
-
+    function changeStatus(todolistID: string,taskId: string, isDone: boolean) {
+        setTasks({...tasks, [todolistID]:[...tasks[todolistID].map(task=>task.id===taskId ? {...task, isDone} : task)]})
     }
 
     function changeFilter(value: FilterValuesType) {
