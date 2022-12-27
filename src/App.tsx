@@ -37,8 +37,8 @@ function App() {
     });
 
 
-    function removeTask(id: string) {
-
+    function removeTask(todolistID: string, taskID: string) {
+        setTasks({...tasks,[todolistID]:[...tasks[todolistID].filter(task=>task.id!==taskID)]});
     }
 
     function addTask(title: string) {
@@ -82,7 +82,7 @@ function App() {
             })}
 
         </div>
-    );
+    )
 }
 
 export default App;
