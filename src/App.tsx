@@ -41,8 +41,9 @@ function App() {
         setTasks({...tasks,[todolistID]:[...tasks[todolistID].filter(task=>task.id!==taskID)]});
     }
 
-    function addTask(title: string) {
-
+    function addTask(todolistID: string,title: string) {
+        const newTask = {id: v1(), title: title, isDone: false}
+        setTasks({...tasks, [todolistID]:[newTask, ...tasks[todolistID]]})
     }
 
     function changeStatus(taskId: string, isDone: boolean) {
@@ -69,6 +70,7 @@ function App() {
 
                 return(
                     <Todolist
+                        key={list.id}
                         todolistID={list.id}
                         title={list.title}
                         tasks={tasksForTodolist}
