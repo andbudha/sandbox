@@ -58,7 +58,7 @@ export function Todolist(props: PropsType) {
         <h3>{props.title}
             <button onClick={removeListHandler}>X</button>
         </h3>
-        <Input callBack={()=>{}} todolistID={props.todolistID}/>
+        <Input callBack={props.addTask} todolistID={props.todolistID}/>
         {/* <div>
             <input value={title}
                    onChange={onChangeHandler}

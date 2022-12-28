@@ -2,7 +2,7 @@ import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import PropTypes from 'prop-types';
 
 type PropsType = {
-    callBack: (id: string, newTitle: string)=> void
+    callBack: (todolistID: string, newTitle: string)=> void
     todolistID: string
 }
 
