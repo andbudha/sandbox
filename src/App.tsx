@@ -47,8 +47,8 @@ function App() {
         setTasks({...tasks, [todolistID]:[newTask, ...tasks[todolistID]]});
     }
     
-    const addToDoList = () => {
-      
+    const addToDoList = (title: string) => {
+      const newTodo = {id: v1(), title: 'What to buy', filter: 'all'}
     }
     
 
@@ -69,7 +69,7 @@ function App() {
     return (
         <div className="App">
 
-            <Input callBack={()=>{}} todolistID={''}/>
+            <Input callBack={addToDoList}/>
 
             {todolists.map(list=>{
 
