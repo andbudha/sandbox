@@ -1,7 +1,12 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import PropTypes from 'prop-types';
 
-export const Input = () => {
+type PropsType = {
+    callBack: (id: string, newTitle: string)=> void
+    todolistID: string
+}
+
+export const Input = (props: PropsType) => {
 
     let [title, setTitle] = useState("");
     let [error, setError] = useState<string | null>(null)
@@ -19,8 +24,9 @@ export const Input = () => {
     }
 
     const addTask = () => {
-        if (title.trim() !== "") {
-            props.addTask(props.todolistID,title.trim());
+        let newTitle = title.trim();
+        if (newTitle !== "") {
+            props.callBack(props.todolistID, newTitle);
             setTitle("");
         } else {
             setError("Title is required");

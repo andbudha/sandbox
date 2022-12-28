@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValuesType} from './App';
+import {Input} from "./components/Input";
 
 type TaskType = {
     id: string
@@ -57,7 +58,7 @@ export function Todolist(props: PropsType) {
         <h3>{props.title}
             <button onClick={removeListHandler}>X</button>
         </h3>
-
+        <Input callBack={()=>{}} todolistID={props.todolistID}/>
         {/* <div>
             <input value={title}
                    onChange={onChangeHandler}
