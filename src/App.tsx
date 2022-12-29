@@ -39,7 +39,7 @@ function App() {
     
     
     const updateTask = (todolistID: string, taskID: string, newTitle: string) => {
-      
+        setTasks({...tasks, [todolistID]:[...tasks[todolistID].map(el=>el.id===taskID ? {...el, title: newTitle} : el)]})
     }
 
     function removeTask(todolistID: string, taskID: string) {
@@ -100,6 +100,7 @@ function App() {
                         changeTaskStatus={changeStatus}
                         filter={list.filter}
                         removeList={removeList}
+                        updateTask={updateTask}
                     />
                 );
             })}
