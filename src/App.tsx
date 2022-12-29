@@ -36,7 +36,11 @@ function App() {
             {id: v1(), title: "ReactJS-2", isDone: false}
         ]
     });
-
+    
+    
+    const updateTask = (todolistID: string, taskID: string, newTitle: string) => {
+      
+    }
 
     function removeTask(todolistID: string, taskID: string) {
         setTasks({...tasks, [todolistID]:[...tasks[todolistID].filter(task=>task.id!==taskID)]});
