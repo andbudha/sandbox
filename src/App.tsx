@@ -49,9 +49,9 @@ function App() {
 
     const addToDoList = (title: string) => {
         const newID= v1();
-        const newTodo:ToDoListType  = {id: v1(), title: title, filter: 'all'};
+        const newTodo:ToDoListType  = {id: newID, title: title, filter: 'all'};
         setTodolists([...todolists, newTodo]);
-        setTasks({[newID]:[{id: v1(), title: "ReactJS-2", isDone: false}],...tasks});
+        setTasks({[newID]:[], ...tasks});
     }
 
 
@@ -68,11 +68,9 @@ function App() {
         delete (tasks[todolistID]);
     }
 
-
     return (
         <div className="App">
-
-
+            <Input callBack={addToDoList}/>
 
             {todolists.map(list=>{
 
@@ -84,7 +82,7 @@ function App() {
                 if (list.filter === "completed") {
                     tasksForTodolist = tasks[list.id].filter(t => t.isDone);
                 }
-
+                // console.log(tasksForTodolist)
 
                 return(
                     <Todolist
@@ -101,7 +99,6 @@ function App() {
                     />
                 );
             })}
-            <Input callBack={addToDoList}/>
 
         </div>
     )

@@ -1,5 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
-import PropTypes from 'prop-types';
+
 
 type PropsType = {
     callBack: (newTitle: string)=> void
