@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
 import {v1} from 'uuid';
+import {Input} from "./components/Input";
 
 export type FilterValuesType = "all" | "active" | "completed";
 
@@ -46,6 +47,11 @@ function App() {
         setTasks({...tasks, [todolistID]:[newTask, ...tasks[todolistID]]});
     }
 
+    const addToDoList = () => {
+
+    }
+
+
     function changeStatus(todolistID: string,taskId: string, isDone: boolean) {
         setTasks({...tasks, [todolistID]:[...tasks[todolistID].map(task=>task.id===taskId ? {...task, isDone} : task)]})
     }
@@ -59,9 +65,11 @@ function App() {
         delete (tasks[todolistID]);
     }
 
-    console.log(tasks)
     return (
         <div className="App">
+
+            <Input callBack={()=>{}}/>
+
             {todolists.map(list=>{
 
                 let tasksForTodolist = tasks[list.id];
