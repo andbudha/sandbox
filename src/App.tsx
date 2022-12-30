@@ -51,7 +51,12 @@ function App() {
         const newID = v1();
         const newTodo: ToDoListType = {id: newID, title: title, filter: 'all'};
         setTodolists([...todolists, newTodo])
-        setTasks({...tasks,[newID]:[]})
+        setTasks({...tasks,[newID]:[
+
+                {id: v1(), title: "HTML&CSS-3", isDone: true},
+                {id: v1(), title: "JS-3", isDone: true}
+
+            ]})
     }
 
 
