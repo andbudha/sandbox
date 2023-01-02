@@ -38,9 +38,10 @@ function App() {
     });
 
     const addToDoList = (title: string) => {
-        let newID = v1();
-        const newList = {id: newID, title: title, filter: 'all'};
-
+      const newID = v1();
+      const newToDo: ToDoListType = {id: newID, title: title, filter: 'all'};
+      setTodolists([...todolists, newToDo]);
+      setTasks({...tasks, [newID]:[{id: v1(), title: "ReactJS", isDone: false}]})
     }
 
     function removeTask(todolistID: string, taskID: string) {
