@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import {FilterValuesType} from './App';
 import {Input} from "./components/Input";
 import {EditableSpan} from "./components/editableSpan";
@@ -20,6 +20,7 @@ type PropsType = {
     filter: FilterValuesType
     removeList:(todolistID: string)=> void
     updateTask:(todolistID: string, taskID: string, newTitle: string)=>void
+    updateTitle:(todolistID: string, newTitle: string)=>void
 }
 
 export function Todolist(props: PropsType) {
@@ -39,10 +40,14 @@ export function Todolist(props: PropsType) {
       props.addTask(props.todolistID,title)
     }
 
+    const updateTitleHandler = (newTitle: string) => {
+        props.updateTitle(props.todolistID, newTitle);
+    }
 
 
     return <div>
-        <h3>{props.title}
+        <h3>
+            <EditableSpan title={props.title} callBack={updateTitleHandler}/>
         <button onClick={removeListHandler}>X</button>
         </h3>
 
