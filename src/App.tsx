@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
 import {v1} from 'uuid';
-import {Input} from "./components/Input";
 
 export type FilterValuesType = "all" | "active" | "completed";
 
@@ -35,8 +34,8 @@ function App() {
             {id: v1(), title: "JS-2", isDone: true},
             {id: v1(), title: "ReactJS-2", isDone: false}
         ]
-
     });
+
 
     function removeTask(todolistID: string, taskID: string) {
         setTasks({...tasks, [todolistID]:[...tasks[todolistID].filter(task=>task.id!==taskID)]});
@@ -46,19 +45,6 @@ function App() {
         const newTask = {id: v1(), title: title, isDone: true}
         setTasks({...tasks, [todolistID]:[newTask, ...tasks[todolistID]]});
     }
-
-    const addToDoList = ( title: string) => {
-        const newID = v1();
-        const newTodo: ToDoListType = {id: newID, title: title, filter: 'all'};
-        setTodolists([...todolists, newTodo])
-        setTasks({...tasks,[newID]:[
-
-                {id: v1(), title: "HTML&CSS-3", isDone: true},
-                {id: v1(), title: "JS-3", isDone: true}
-
-            ]})
-    }
-
 
     function changeStatus(todolistID: string,taskId: string, isDone: boolean) {
         setTasks({...tasks, [todolistID]:[...tasks[todolistID].map(task=>task.id===taskId ? {...task, isDone} : task)]})
@@ -75,9 +61,6 @@ function App() {
 
     return (
         <div className="App">
-
-            <Input callBack={addToDoList}/>
-
             {todolists.map(list=>{
 
                 let tasksForTodolist = tasks[list.id];

@@ -23,6 +23,10 @@ type PropsType = {
 export function Todolist(props: PropsType) {
 
 
+
+
+
+
     const onAllClickHandler = () => props.changeFilter(props.todolistID,"all");
     const onActiveClickHandler = () => props.changeFilter(props.todolistID,"active");
     const onCompletedClickHandler = () => props.changeFilter(props.todolistID,"completed");
@@ -32,17 +36,15 @@ export function Todolist(props: PropsType) {
       props.removeList(props.todolistID);
     }
 
-    const addTaskHandler = (newTitle: string) => {
-        props.addTask(props.todolistID,newTitle);
+    const inputHandler = (title:string) => {
+      props.addTask(props.todolistID,title)
     }
 
     return <div>
         <h3>{props.title}
         <button onClick={removeListHandler}>X</button>
         </h3>
-
-        <Input callBack={addTaskHandler} />
-
+        <Input callBack={inputHandler}/>
         <ul>
             {
                 props.tasks.map(t => {
