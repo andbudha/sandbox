@@ -37,7 +37,9 @@ function App() {
         ]
     });
 
+    const updateTask = (todolistID: string,taskId: string, newTitle: string) => {
 
+    }
     
     const addToDo = (title: string) => {
         const newID = v1();
@@ -101,6 +103,7 @@ function App() {
                         changeTaskStatus={changeStatus}
                         filter={list.filter}
                         removeList={removeList}
+                        updateTask={updateTask}
                     />
                 );
             })}
