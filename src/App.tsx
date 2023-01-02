@@ -38,6 +38,23 @@ function App() {
     });
 
 
+    
+    const addToDo = (title: string) => {
+        const newID = v1();
+        const newList: ToDoListType = {id: newID, title: title, filter: 'all'};
+        setTodolists([...todolists, newList]);
+        setTasks({...tasks, [newID]:[
+                {id: v1(), title: "HTML&CSS-3", isDone: true},
+                {id: v1(), title: "JS-3", isDone: true},
+                {id: v1(), title: "ReactJS-3", isDone: false}
+            ]})
+    }
+
+    const removeList = (todolistID: string) => {
+        setTodolists([...todolists.filter(list=>list.id!==todolistID)]);
+        delete (tasks[todolistID]);
+    }
+
     function removeTask(todolistID: string, taskID: string) {
         setTasks({...tasks, [todolistID]:[...tasks[todolistID].filter(task=>task.id!==taskID)]});
     }
@@ -54,17 +71,12 @@ function App() {
     function changeFilter(todolistID: string,value: FilterValuesType) {
         setTodolists( [...todolists.map(list=>list.id===todolistID ? {...list, filter: value} : list)])
     }
-
-    const removeList = (todolistID: string) => {
-        setTodolists([...todolists.filter(list=>list.id!==todolistID)]);
-        delete (tasks[todolistID]);
-    }
-
+    
 
 
     return (
         <div className="App">
-
+            <Input callBack={addToDo}/>
             {todolists.map(list=>{
 
                 let tasksForTodolist = tasks[list.id];
