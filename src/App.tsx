@@ -37,8 +37,8 @@ function App() {
         ]
     });
 
-    const updateTask = (todolistID: string,taskId: string, newTitle: string) => {
-
+    const updateTask = (todolistID: string, taskID: string, newTitle: string) => {
+      setTasks({...tasks, [todolistID]:[...tasks[todolistID].map(task=>task.id===taskID ? {...task, title: newTitle} : task)]})
     }
     
     const addToDo = (title: string) => {

@@ -4,6 +4,7 @@ import input = Simulate.input;
 
 type PropsType = {
     title: string
+    callBack:(newTitle: string)=> void
 }
 
 export const EditableSpan = (props: PropsType) => {
@@ -14,15 +15,18 @@ export const EditableSpan = (props: PropsType) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewTitle(e.currentTarget.value)
+
     }
 
-    const editFooHandler = () => {
-      setEdit(!edit);
+    const editHandler = () => {
+        setEdit(!edit);
+        props.callBack(newTitle);
     }
+
     return (
         edit
-            ? <input value={newTitle} autoFocus onBlur={editFooHandler} onChange={onChangeHandler}/>
-            :   <span onDoubleClick={editFooHandler}>{props.title}</span>
+            ? <input value={newTitle} autoFocus onBlur={editHandler} onChange={onChangeHandler}/>
+            :   <span onDoubleClick={editHandler}>{props.title}</span>
     );
 };
 
