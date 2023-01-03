@@ -74,6 +74,9 @@ function App() {
             ]});
     }
 
+    const updateToDoListTitle = (todolistID: string, newTitle:string) => {
+        setTodolists(todolists.map(list=>list.id===todolistID ? {...list, title: newTitle} : list))
+    }
     return (
         <div className="App">
             <Input callBack={addNewToDoList}/>
@@ -103,6 +106,7 @@ function App() {
                         filter={list.filter}
                         removeList={removeList}
                         updateTaskTitle={updateTaskTitle}
+                        updateToDoListTitle={updateToDoListTitle}
                     />
                 );
             })}
