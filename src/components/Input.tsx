@@ -1,4 +1,6 @@
+
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import Button from '@mui/material/Button';
 
 type PropsType = {
     callBack:(newTitle: string)=>void
@@ -37,7 +39,8 @@ export const Input = (props: PropsType) => {
                    onKeyDown={onKeyPressHandler}
                    className={error ? "error" : ""}
             />
-            <button onClick={addTask}>+</button>
+            {/*<button onClick={addTask}>+</button>*/}
+            <Button variant="contained" onClick={addTask}>+</Button>
             {error && <div className="error-message">{error}</div>}
         </div>
     );
