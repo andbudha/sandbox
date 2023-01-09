@@ -1,8 +1,8 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import {FilterValuesType} from './App';
-import {Input} from "./components/Input";
+import {Input} from "./Input/Input";
 import {TitleChanger} from "./components/TitleChanger";
-import {Button} from "@mui/material";
+
 
 type TaskType = {
     id: string

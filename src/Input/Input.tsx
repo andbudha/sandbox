@@ -1,6 +1,7 @@
 
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import Button from '@mui/material/Button';
+import './Input.css'
 
 type PropsType = {
     callBack:(newTitle: string)=>void
@@ -40,7 +41,7 @@ export const Input = (props: PropsType) => {
                    className={error ? "error" : ""}
             />
             {/*<button onClick={addTask}>+</button>*/}
-            <Button variant="contained" onClick={addTask}>+</Button>
+            <Button variant="contained" size="small" onClick={addTask} className={'btn'}>+</Button>
             {error && <div className="error-message">{error}</div>}
         </div>
     );

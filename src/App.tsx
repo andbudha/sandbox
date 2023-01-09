@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
 import {v1} from 'uuid';
-import {Input} from "./components/Input";
+import {Input} from "./Input/Input";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
