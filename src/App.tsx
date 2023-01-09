@@ -4,6 +4,7 @@ import {Todolist} from './Todolist';
 import {v1} from 'uuid';
 import {Input} from "./components/Input";
 
+
 export type FilterValuesType = "all" | "active" | "completed";
 
 export type ToDoListType = {
@@ -24,6 +25,7 @@ function App() {
 
     ])
 
+
     let [tasks, setTasks] = useState({
         [todolistID1] : [
             {id: v1(), title: "HTML&CSS", isDone: true},
@@ -37,8 +39,8 @@ function App() {
         ]
     });
 
-    const updateTaskTitle = (todolistID: string, taskID: string, newTitle:string) => {
-        setTasks({...tasks, [todolistID]:[...tasks[todolistID].map(task=>task.id===taskID ? {...task, title: newTitle} : task)]});
+    const updateTaskTitle = (todolistID: string,taskId: string, newTitle: string) => {
+        setTasks(({...tasks, [todolistID]:[...tasks[todolistID].map(task=>task.id===taskId ? {...task, title: newTitle} : task)]}))
     }
 
     function removeTask(todolistID: string, taskID: string) {
@@ -63,24 +65,23 @@ function App() {
         delete (tasks[todolistID]);
     }
 
-    const addNewToDoList = (title: string) => {
+    const createToDoListHandler = (newListTitle: string) => {
         const newID = v1();
-        const newList: ToDoListType = {id: newID, title: title, filter: 'all'}
-        setTodolists([...todolists, newList]);
+        const newList: ToDoListType =  {id: newID, title: newListTitle, filter: 'all'}
+        setTodolists([...todolists, newList])
         setTasks({...tasks, [newID]:[
                 {id: v1(), title: "HTML&CSS-3", isDone: true},
                 {id: v1(), title: "JS-3", isDone: true},
                 {id: v1(), title: "ReactJS-3", isDone: false}
-            ]});
+            ]})
     }
 
-    const updateToDoListTitle = (todolistID: string, newTitle:string) => {
+    const updateToDoListTitle = (todolistID: string, newTitle: string) => {
         setTodolists(todolists.map(list=>list.id===todolistID ? {...list, title: newTitle} : list))
     }
     return (
         <div className="App">
-            <Input callBack={addNewToDoList}/>
-
+            <Input callBack={createToDoListHandler}/>
             {todolists.map(list=>{
 
                 let tasksForTodolist = tasks[list.id];

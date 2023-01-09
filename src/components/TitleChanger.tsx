@@ -2,28 +2,31 @@ import React, {ChangeEvent, useState} from 'react';
 
 type PropsType = {
     title: string
-    callBack:(title: string)=>void
+    callBack: (newTitle: string)=> void
 }
-export const TitleChanger = (props: PropsType) => {
-    const[edit, setEdit]=useState(false);
-    const[newTitle, setNewTitle]=useState(props.title);
 
-    const displayInput = () => {
-      setEdit(true);
+export const TitleChanger = (props: PropsType) => {
+    const[editor, setEditor]=useState(false);
+    let [newTitle, setNewTitle] = useState(props.title)
+
+
+    const inputDisplayHandler = () => {
+      setEditor(true);
     }
 
-    const hideInput = () => {
-        setEdit(false);
-        props.callBack(newTitle);
+    const inputHideHandler = () => {
+      setEditor(false);
+      props.callBack(newTitle);
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewTitle(e.currentTarget.value)
     }
 
+
     return (
-        edit
-            ? <input value={newTitle} autoFocus onBlur={hideInput} onChange={onChangeHandler}/>
-            : <span onDoubleClick={displayInput}>{props.title}</span>
+        editor
+            ? <input value={newTitle} autoFocus onBlur={inputHideHandler} onChange={onChangeHandler}/>
+            : <span onDoubleClick={inputDisplayHandler}>{props.title}</span>
     );
 };

@@ -1,7 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 
 type PropsType = {
-    callBack:(title: string)=> void
+    callBack:(newTitle: string)=>void
 }
 
 export const Input = (props: PropsType) => {
@@ -10,7 +10,7 @@ export const Input = (props: PropsType) => {
     let [error, setError] = useState<string | null>(null)
 
     const addTask = () => {
-        let newTitle = title.trim();
+        const newTitle=title.trim();
         if (newTitle !== "") {
             props.callBack(newTitle);
             setTitle("");

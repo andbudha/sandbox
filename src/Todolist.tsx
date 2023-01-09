@@ -1,7 +1,8 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValuesType} from './App';
 import {Input} from "./components/Input";
 import {TitleChanger} from "./components/TitleChanger";
+import {Button} from "@mui/material";
 
 type TaskType = {
     id: string
@@ -19,8 +20,8 @@ type PropsType = {
     changeTaskStatus: (todolistID: string,taskId: string, isDone: boolean) => void
     filter: FilterValuesType
     removeList:(todolistID: string)=> void
-    updateTaskTitle:(todolistID: string, taskID: string, newTitle:string)=> void
-    updateToDoListTitle:(todolistID: string, newTitle:string)=> void
+    updateTaskTitle:(todolistID: string,taskId: string, newTitle: string)=> void
+    updateToDoListTitle:(todolistID: string, newTitle: string)=> void
 }
 
 export function Todolist(props: PropsType) {
@@ -33,22 +34,23 @@ export function Todolist(props: PropsType) {
 
 
     const removeListHandler = () => {
-      props.removeList(props.todolistID);
+        props.removeList(props.todolistID);
     }
 
-    const inputValueHandler = (title: string) => {
-      props.addTask(props.todolistID, title);
+    const inputValueHandler = (newTitle: string) => {
+        props.addTask(props.todolistID, newTitle);
     }
 
-    const updateToDoListTitleHandler = (newTitle: string) => {
-      props.updateToDoListTitle(props.todolistID, newTitle);
+    const updateTodolistTitleHandler = (newTitle: string) => {
+        props.updateToDoListTitle(props.todolistID, newTitle);
     }
 
     return <div>
         <h3>
-        <TitleChanger title={props.title} callBack={updateToDoListTitleHandler}/>
-        <button onClick={removeListHandler}>X</button>
+            <TitleChanger title={props.title} callBack={updateTodolistTitleHandler}/>
+            <button onClick={removeListHandler}>X</button>
         </h3>
+
         <Input callBack={inputValueHandler}/>
         <ul>
             {
@@ -57,9 +59,9 @@ export function Todolist(props: PropsType) {
                     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
                         props.changeTaskStatus(props.todolistID,t.id, e.currentTarget.checked);
                     }
-
-                    const updateTaskTitle = (newTitle: string) => {
-                        props.updateTaskTitle(props.todolistID, t.id, newTitle);
+                    
+                    const updateTasTitleHandler = (newTitle: string) => {
+                      props.updateTaskTitle(props.todolistID, t.id, newTitle);
                     }
 
                     return <li key={t.id} className={t.isDone ? "is-done" : ""}>
@@ -67,9 +69,10 @@ export function Todolist(props: PropsType) {
                                onChange={onChangeHandler}
                                checked={t.isDone}/>
 
+                        <TitleChanger title={t.title} callBack={updateTasTitleHandler}/>
 
-                        <TitleChanger title={t.title} callBack={updateTaskTitle}/>
                         <button onClick={onClickHandler}>x</button>
+                       
                     </li>
                 })
             }
