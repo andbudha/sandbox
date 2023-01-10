@@ -1,6 +1,7 @@
 
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import './Input.css'
 
 type PropsType = {
@@ -35,11 +36,26 @@ export const Input = (props: PropsType) => {
 
     return (
         <div>
-            <input value={title}
-                   onChange={onChangeHandler}
-                   onKeyDown={onKeyPressHandler}
-                   className={error ? "error" : ""}
+            {/*
+            <input
+                value={title}
+                onChange={onChangeHandler}
+                onKeyDown={onKeyPressHandler}
+                className={error ? "error" : ""}
             />
+            */}
+
+            <TextField
+                size={'small'}
+                value={title}
+                onChange={onChangeHandler}
+                onKeyDown={onKeyPressHandler}
+                className={error ? "error" : ""}
+                id="outlined-basic"
+                label="For tasks..."
+                variant="outlined"
+            />
+
             {/*<button onClick={addTask}>+</button>*/}
             <Button variant="contained" size="small" onClick={addTask} className={'btn'}>+</Button>
             {error && <div className="error-message">{error}</div>}
