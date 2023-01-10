@@ -6,6 +6,8 @@ import {Input} from "./Input/Input";
 import ButtonAppBar from "./components/ButtonAppBar/ButtonAppBar";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -90,7 +92,8 @@ function App() {
                 <Grid container>
                     <Input callBack={createToDoListHandler}/>
                 </Grid>
-                <Grid container>
+
+                <Grid container spacing={3}>
                     {todolists.map(list=>{
 
                         let tasksForTodolist = tasks[list.id];
@@ -104,6 +107,7 @@ function App() {
 
 
                         return(
+                            <Grid item>
                             <Todolist
                                 key={list.id}
                                 todolistID={list.id}
@@ -118,10 +122,10 @@ function App() {
                                 updateTaskTitle={updateTaskTitle}
                                 updateToDoListTitle={updateToDoListTitle}
                             />
+                            </Grid>
                         );
                     })}
                 </Grid>
-
             </Container>
 
 
