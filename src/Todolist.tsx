@@ -77,13 +77,17 @@ export function Todolist(props: PropsType) {
 
                         <TitleChanger title={t.title} callBack={updateTasTitleHandler}/>
 
-                        <button onClick={onClickHandler}>x</button>
-                       
+                        {/*<button onClick={onClickHandler}>x</button>*/}
+                        <IconButton aria-label="delete" onClick={onClickHandler}>
+                            <Delete />
+                        </IconButton>
                     </li>
                 })
             }
         </ul>
         <div>
+
+
             <button className={props.filter === 'all' ? "active-filter" : ""}
                     onClick={onAllClickHandler}>All</button>
             <button className={props.filter === 'active' ? "active-filter" : ""}
