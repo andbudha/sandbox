@@ -6,7 +6,6 @@ import {Input} from "./Input/Input";
 import ButtonAppBar from "./components/ButtonAppBar/ButtonAppBar";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
 
@@ -89,7 +88,7 @@ function App() {
 
             <ButtonAppBar/>
             <Container fixed>
-                <Grid container>
+                <Grid container className={'container_padding'}>
                     <Input callBack={createToDoListHandler}/>
                 </Grid>
 
@@ -108,20 +107,22 @@ function App() {
 
                         return(
                             <Grid item>
-                            <Todolist
-                                key={list.id}
-                                todolistID={list.id}
-                                title={list.title}
-                                tasks={tasksForTodolist}
-                                removeTask={removeTask}
-                                changeFilter={changeFilter}
-                                addTask={addTask}
-                                changeTaskStatus={changeStatus}
-                                filter={list.filter}
-                                removeList={removeList}
-                                updateTaskTitle={updateTaskTitle}
-                                updateToDoListTitle={updateToDoListTitle}
-                            />
+                                <Paper className={'paper_note'} elevation={3}>
+                                    <Todolist
+                                        key={list.id}
+                                        todolistID={list.id}
+                                        title={list.title}
+                                        tasks={tasksForTodolist}
+                                        removeTask={removeTask}
+                                        changeFilter={changeFilter}
+                                        addTask={addTask}
+                                        changeTaskStatus={changeStatus}
+                                        filter={list.filter}
+                                        removeList={removeList}
+                                        updateTaskTitle={updateTaskTitle}
+                                        updateToDoListTitle={updateToDoListTitle}
+                                    />
+                                </Paper>
                             </Grid>
                         );
                     })}
