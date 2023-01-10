@@ -19,7 +19,7 @@ export const Input = (props: PropsType) => {
             props.callBack(newTitle);
             setTitle("");
         } else {
-            setError("Title is required");
+            setError(" ");
         }
     }
 
@@ -50,9 +50,9 @@ export const Input = (props: PropsType) => {
                 value={title}
                 onChange={onChangeHandler}
                 onKeyDown={onKeyPressHandler}
-                className={error ? "error" : ""}
+                error={!!error}
                 id="outlined-basic"
-                label="For tasks..."
+                label={error ? 'Title is required' : 'Typing in progress...'}
                 variant="outlined"
             />
 

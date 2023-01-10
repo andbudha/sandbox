@@ -5,6 +5,7 @@ import {TitleChanger} from "./components/TitleChanger";
 import IconButton from '@mui/material/IconButton';
 import {Delete} from "@mui/icons-material";
 import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
 
 
 
@@ -72,9 +73,20 @@ export function Todolist(props: PropsType) {
                     }
 
                     return <li key={t.id} className={t.isDone ? "is-done" : ""}>
-                        <input type="checkbox"
+
+                        {/*
+                        <input
+                            type="checkbox"
                                onChange={onChangeHandler}
-                               checked={t.isDone}/>
+                               checked={t.isDone}
+                        />
+                        */}
+
+                        <Checkbox
+                            defaultChecked
+                            onChange={onChangeHandler}
+                            checked={t.isDone}
+                        />
 
                         <TitleChanger title={t.title} callBack={updateTasTitleHandler}/>
 
