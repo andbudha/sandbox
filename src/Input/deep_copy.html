@@ -65,8 +65,14 @@
         {name: "William", age: 28}
     ];
 
+    console.log(people);
 
-    let peopleFullCopy  // your code
+
+    let peopleFullCopy = people.map(person=>({...person}));
+
+    peopleFullCopy[2].name = 'Andrei';
+    peopleFullCopy[2].age = 41;
+    console.log(peopleFullCopy);
 
 
     // 6 Array of objects inside object
