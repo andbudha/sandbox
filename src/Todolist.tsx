@@ -68,29 +68,20 @@ export function Todolist(props: PropsType) {
                         props.changeTaskStatus(props.todolistID,t.id, e.currentTarget.checked);
                     }
                     
-                    const updateTasTitleHandler = (newTitle: string) => {
+                    const updateTasTitkleHandler = (newTitle: string) => {
                       props.updateTaskTitle(props.todolistID, t.id, newTitle);
                     }
 
                     return <li key={t.id} className={t.isDone ? "is-done" : ""}>
-
-                        {/*
-                        <input
-                            type="checkbox"
-                               onChange={onChangeHandler}
-                               checked={t.isDone}
-                        />
-                        */}
-
+                        
                         <Checkbox
                             defaultChecked
                             onChange={onChangeHandler}
                             checked={t.isDone}
                         />
 
-                        <TitleChanger title={t.title} callBack={updateTasTitleHandler}/>
+                        <TitleChanger title={t.title} callBack={updateTasTitkleHandler}/>
 
-                        {/*<button onClick={onClickHandler}>x</button>*/}
                         <IconButton aria-label="delete" onClick={onClickHandler}>
                             <Delete />
                         </IconButton>
