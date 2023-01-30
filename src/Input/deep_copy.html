@@ -35,7 +35,12 @@
         }
     };
 
-    let man1FullCopy // your code
+    console.log(man1);
+
+    let man1FullCopy = {...man1, mother: {...man1.mother}}
+
+    man1FullCopy.mother.name = 'Delia';
+    console.log(man1FullCopy);
 
 
     // 4. Array of primitives inside an object
