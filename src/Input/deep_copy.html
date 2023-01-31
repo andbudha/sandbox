@@ -118,6 +118,7 @@
 
     console.log(man4FullCopy);
 
+
     // 8 Array of objects inside object -> object
     let man5 = {
         name: 'John',
@@ -136,7 +137,13 @@
         }
     };
 
-    let man5FullCopy //  your code
+    console.log(man5);
+
+    let man5FullCopy = {...man5, mother: {...man5.mother, work: {...man5.mother.work}, parents: [...man5.mother.parents.map(parent=>({...parent}))]}};
+    man5FullCopy.mother.parents[0].name = 'Mihai';
+    man5FullCopy.mother.parents[0].age = 75;
+
+    console.log(man5FullCopy);
 
 
     // 9 Object inside an object -> array -> object ->  object
