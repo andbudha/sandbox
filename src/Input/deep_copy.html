@@ -87,8 +87,12 @@
     };
     console.log(man3);
 
-    let man3FullCopy //  your code
+    let man3FullCopy = {...man3, friends: [...man3.friends.map(friend=>({...friend}))]};
 
+    man3FullCopy.friends[2].name = 'Andrei';
+    man3FullCopy.friends[2].age = 41;
+
+    console.log(man3FullCopy);
 
     // 7 Object inside an object, inside an object
     let man4 = {
