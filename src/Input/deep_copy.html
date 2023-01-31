@@ -228,7 +228,20 @@
             ]
         }
     };
+    console.log(man7);
 
-    let man7FullCopy  //  your code
+    let man7FullCopy = {...man7,
+        mother: {...man7.mother,
+            work: {...man7.mother.work},
+            parents: [...man7.mother.parents
+                .map(parent=>({...parent, favoriteDish: {...parent.favoriteDish, ingredients: [...parent.favoriteDish.ingredients
+                            .map(ingredient=>({...ingredient}))]}}))]}};
+
+    man7FullCopy.mother.parents[1].name = 'Liudmila';
+    man7FullCopy.mother.parents[1].favoriteDish.title = 'clatite';
+    man7FullCopy.mother.parents[1].favoriteDish.ingredients[0].title = 'milk';
+    man7FullCopy.mother.parents[1].favoriteDish.ingredients[1].title = 'eggs';
+
+    console.log(man7FullCopy);
 
 </script>
