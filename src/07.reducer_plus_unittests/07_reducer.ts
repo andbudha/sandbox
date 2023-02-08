@@ -1,9 +1,5 @@
 
 
-export const getSum = (numOne: number, numTwo: number) => {
-    return numOne + numTwo;
-}
-
 
 export type StateType = {
     name: string

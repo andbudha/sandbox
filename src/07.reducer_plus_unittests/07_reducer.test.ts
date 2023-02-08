@@ -1,17 +1,4 @@
-import {getSum, increaseAgeAC, newFamilyMemberAC, StateType, userReducer} from "./07_reducer";
-
-test('The sum must be correct',()=>{
-    //data
-    const numOne: number = 55;
-    const numTwo: number = 5;
-
-    //operation
-    const sumResult = getSum(numOne, numTwo);
-
-    //expectation
-    expect(sumResult).toBe(60);
-})
-
+import {increaseAgeAC, newFamilyMemberAC, StateType, userReducer} from "./07_reducer";
 
 
 
