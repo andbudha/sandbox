@@ -1,4 +1,4 @@
-import {ToDoListType} from "../App";
+import {FilterValuesType, ToDoListType} from "../App";
 import {v1} from "uuid";
 
 
@@ -15,6 +15,9 @@ export const TodolistReducer = (state: ToDoListType[], action: VersatileType):To
         case "CHANGE-LIST-TITLE":{
             return state.map(list=>list.id === action.payload.id ? {...list, title: action.payload.newTitle} : list);
         }
+        case "CHANGE-LIST-FILTER":{
+            return state.map(list=>list.id === action.payload.listID ? {...list, filter: action.payload.newFilter} : list)
+        }
         default:{
             return state;
         }
@@ -22,7 +25,7 @@ export const TodolistReducer = (state: ToDoListType[], action: VersatileType):To
 }
 
 
-type VersatileType = RemoveToDoListACType | AddToDoListACType | ChangeListTitleACType
+type VersatileType = RemoveToDoListACType | AddToDoListACType | ChangeListTitleACType | ChangeListFilterACType
 
 type RemoveToDoListACType = ReturnType<typeof RemoveToDoListAC>
 export const RemoveToDoListAC = (listID: string) => {
@@ -52,6 +55,17 @@ export const ChangeListTitleAC = (title: string, listID: string) => {
         payload: {
             newTitle: title,
             id: listID
+        }
+    }as const
+}
+
+type ChangeListFilterACType = ReturnType<typeof ChangeListFilterAC>
+export const ChangeListFilterAC = (filter: FilterValuesType, id: string) => {
+    return{
+        type: 'CHANGE-LIST-FILTER',
+        payload: {
+            newFilter: filter,
+            listID: id
         }
     }as const
 }
