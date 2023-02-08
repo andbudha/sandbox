@@ -53,10 +53,12 @@ export function getSum(number: number): number{
 // суммы чисел с нечётными ИНДЕКСАМИ!!!, то функция возвращает true.
 // В противном случае - false.
 
-export const isEvenIndexSumGreater = (arr: Array<number>): boolean => {
+export const isEvenIndexSumGreater = (nums: Array<number>): boolean => {
     //...здесь пишем код.
     // В return стоит "заглушка", чтоб typescript не ругался
-    return arr.filter((num, index) => index % 2 === 0) > arr.filter((num, index) => index % 2 !== 0);
+    const evenIndexNums = nums.filter((num, index)=> index % 2 === 0 && num).reduce((acc, val)=> acc+val);
+    const oddIndexNums = nums.filter((num, index)=>index%2 !== 0 && num).reduce((acc, val)=> acc+val);
+    return evenIndexNums > oddIndexNums;
 }
 
 // 5. Функция getSquarePositiveIntegers принимает параметром массив чисел и возвращает новый массив. 

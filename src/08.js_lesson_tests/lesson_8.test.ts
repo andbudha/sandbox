@@ -26,6 +26,7 @@ test("is Even Sum Greater", ()=> {
     expect(isEvenIndexSumGreater([100, 1, 200, 2])).toBe(true)
     expect(isEvenIndexSumGreater([100, 1, 200, 2, 300, 4])).toBe(true)
     expect(isEvenIndexSumGreater([100, 1, 200, 2, 4])).toBe(true)
+    expect(isEvenIndexSumGreater([10, 1, 2, 22])).toBe(false)
 })
 test("get Square Only Of Positive Integers", () => {
     const array = [4, 5.6, -9.8, 3.14, 10, 6, 8.34, -2]
