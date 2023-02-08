@@ -23,9 +23,10 @@ test('The user-age will be increased',()=>{
         brother: 0
     }
 
+    const ageToAdd: number = 1;
     //operation
 
-    const newAge = userReducer(startState, increaseAgeAC());
+    const newAge = userReducer(startState, increaseAgeAC(ageToAdd));
 
     //expectation
 
@@ -40,9 +41,11 @@ test('Now Delia has got a brother!',()=>{
         brother:0
     }
 
+    const brother: number = 1
+
     //operation
 
-    const bigFamily = userReducer(newlyBornBrother, newFamilyMemberAC());
+    const bigFamily = userReducer(newlyBornBrother, newFamilyMemberAC(brother));
 
     //expectation
 
