@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import {Delete} from "@mui/icons-material";
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
+import {SuperCheckbox} from "./TODOLIST_COMPONENTS/Super_checkbox/SuperCheckbox";
 
 
 
@@ -72,13 +73,21 @@ export function Todolist(props: PropsType) {
                       props.updateTaskTitle(props.todolistID, t.id, newTitle);
                     }
 
+                    const checkboxStatusHandler = (checkboxStatus: boolean) => {
+                        props.changeTaskStatus(props.todolistID, t.id,checkboxStatus )
+                    }
+
                     return <li key={t.id} className={t.isDone ? "is-done" : ""}>
 
+                        {/*Checkbox from Material UI*/}
+                        {/*
                         <Checkbox
                             defaultChecked
                             onChange={onChangeHandler}
                             checked={t.isDone}
                         />
+                        */}
+                        <SuperCheckbox callBack={checkboxStatusHandler} checkboxStatus={t.isDone}/>
 
                         <TitleChanger title={t.title} callBack={updateTasTitleHandler}/>
 
