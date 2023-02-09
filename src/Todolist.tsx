@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import {FilterValuesType} from './App';
 import {Input} from "./TODOLIST_COMPONENTS/Input/Input";
-import {TitleChanger} from "./components/TitleChanger";
+import {TitleChanger} from "./TODOLIST_COMPONENTS/TitleChanger/TitleChanger";
 import IconButton from '@mui/material/IconButton';
 import {Delete} from "@mui/icons-material";
 import Button from '@mui/material/Button';
@@ -51,6 +51,11 @@ export function Todolist(props: PropsType) {
         props.updateToDoListTitle(props.todolistID, newTitle);
     }
 
+
+    const checkboxStatusHandler = (changedStatus: boolean, taskID: string) => {
+        props.changeTaskStatus(props.todolistID, taskID, changedStatus);
+    }
+
     return <div>
         <h3>
             <TitleChanger title={props.title} callBack={updateTodolistTitleHandler}/>
@@ -73,9 +78,7 @@ export function Todolist(props: PropsType) {
                       props.updateTaskTitle(props.todolistID, t.id, newTitle);
                     }
 
-                    const checkboxStatusHandler = (checkboxStatus: boolean) => {
-                        props.changeTaskStatus(props.todolistID, t.id,checkboxStatus )
-                    }
+
 
                     return <li key={t.id} className={t.isDone ? "is-done" : ""}>
 
@@ -87,7 +90,7 @@ export function Todolist(props: PropsType) {
                             checked={t.isDone}
                         />
                         */}
-                        <SuperCheckbox callBack={checkboxStatusHandler} checkboxStatus={t.isDone}/>
+                        <SuperCheckbox callBack={(changedStatus)=>checkboxStatusHandler(changedStatus,t.id)} checkboxStatus={t.isDone}/>
 
                         <TitleChanger title={t.title} callBack={updateTasTitleHandler}/>
 
