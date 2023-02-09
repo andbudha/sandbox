@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import {FilterValuesType} from './App';
-import {Input} from "./Input/Input";
+import {Input} from "./TODOLIST_COMPONENTS/Input/Input";
 import {TitleChanger} from "./components/TitleChanger";
 import IconButton from '@mui/material/IconButton';
 import {Delete} from "@mui/icons-material";
@@ -68,19 +68,19 @@ export function Todolist(props: PropsType) {
                         props.changeTaskStatus(props.todolistID,t.id, e.currentTarget.checked);
                     }
                     
-                    const updateTasTitkleHandler = (newTitle: string) => {
+                    const updateTasTitleHandler = (newTitle: string) => {
                       props.updateTaskTitle(props.todolistID, t.id, newTitle);
                     }
 
                     return <li key={t.id} className={t.isDone ? "is-done" : ""}>
-                        
+
                         <Checkbox
                             defaultChecked
                             onChange={onChangeHandler}
                             checked={t.isDone}
                         />
 
-                        <TitleChanger title={t.title} callBack={updateTasTitkleHandler}/>
+                        <TitleChanger title={t.title} callBack={updateTasTitleHandler}/>
 
                         <IconButton aria-label="delete" onClick={onClickHandler}>
                             <Delete />
