@@ -7,6 +7,7 @@ import ButtonAppBar from "./components/ButtonAppBar/ButtonAppBar";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import {ReactMemo} from "./07_react_memo/React_memo";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -128,7 +129,9 @@ function App() {
                     })}
                 </Grid>
             </Container>
-
+            
+            
+            <ReactMemo/>
 
         </div>
     )
