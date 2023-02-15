@@ -1,6 +1,6 @@
 
 import {v1} from "uuid";
-import {addTaskAC, removeTaskAC, tasksReducer} from "./tasks-reducer";
+import {addTaskAC, changeTaskStatusAC, removeTaskAC, tasksReducer} from "./tasks-reducer";
 
 
 
@@ -58,4 +58,33 @@ test('A new task must be added to the second list!', ()=>{
 
     expect(resultState[listID2].length).toBe(4);
     expect(resultState[listID2][0].title).toBe('TDD');
+});
+
+test('The first task in the first list should change its status to false', ()=>{
+
+    const listID1 = v1();
+
+    const listID2 = v1();
+
+    const startState = {
+        [listID1] : [
+            {id: v1(), title: "HTML&CSS", isDone: true},
+            {id: v1(), title: "JS", isDone: true},
+            {id: v1(), title: "ReactJS", isDone: false}
+        ],
+        [listID2]: [
+            {id: v1(), title: "HTML&CSS-2", isDone: true},
+            {id: v1(), title: "JS-2", isDone: true},
+            {id: v1(), title: "ReactJS-2", isDone: false}
+        ]
+    };
+
+    const taskIDToBeChanged = startState[listID1][0].id
+    const taskStatus = startState[listID1][0].isDone
+
+    const resultState = tasksReducer(startState, changeTaskStatusAC(listID1, taskIDToBeChanged, taskStatus));
+
+    expect(resultState[listID1][0].isDone).toBe(false);
+    expect(resultState[listID2][0].isDone).toBe(true);
+    expect(resultState[listID1][0].title).toBe("HTML&CSS");
 });

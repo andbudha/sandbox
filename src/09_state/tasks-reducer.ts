@@ -5,9 +5,9 @@ export type TaskStateType = {
     [key: string]: TaskType[]
 }
 
-type ActionsType = removeTaskType | addTaskACType
+type ActionsType = removeTaskType | addTaskACType | changeTaskStatusACType
 
-export const tasksReducer = (state: TaskStateType, action: ActionsType) => {
+export const tasksReducer = (state: TaskStateType, action: ActionsType):TaskStateType => {
     switch (action.type) {
         case 'REMOVE-TASK':
             return {...state,
@@ -17,6 +17,11 @@ export const tasksReducer = (state: TaskStateType, action: ActionsType) => {
             const newTaskID = v1();
             const newTask = {id: newTaskID, title: action.payload.newTaskTitle, isDone: false}
             return {...state, [action.payload.listID]:[newTask, ...state[action.payload.listID]]};
+        case "CHANGE-STATUS":
+            return {...state,
+                [action.payload.listID]:state[action.payload.listID]
+                    .map(task=>task.id === action.payload.taskIDToBeChanged
+                        ?{...task, isDone: !action.payload.taskStatus} : task)};
         default:
             return state;
     }
@@ -47,3 +52,14 @@ export const addTaskAC = (listID: string, newTaskTitle: string) => {
 }
 
 
+type changeTaskStatusACType = ReturnType<typeof changeTaskStatusAC>
+export const changeTaskStatusAC = (listID: string, taskIDToBeChanged: string, taskStatus: boolean) =>{
+    return{
+        type: 'CHANGE-STATUS',
+        payload: {
+            listID,
+            taskIDToBeChanged,
+            taskStatus
+        }
+    }as const
+}
