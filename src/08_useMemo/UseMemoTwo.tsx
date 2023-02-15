@@ -64,7 +64,6 @@ export const UseMemoTwo = () => {
         return newArray;
     }, [])
 
-
     return(
         <div className={'memo_container'}>
             <h2>React Memo Practice</h2>
