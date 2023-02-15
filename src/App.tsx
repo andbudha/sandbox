@@ -129,7 +129,8 @@ function App() {
                     })}
                 </Grid>
             </Container>
-            
+
+            <hr/>
             
             <ReactMemo/>
 

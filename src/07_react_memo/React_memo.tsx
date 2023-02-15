@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './React_memo.css'
 
 
 type UserType = {
@@ -54,15 +55,26 @@ export const ReactMemo = () => {
         {name: 'Natalia', age: 37},
         {name: 'Dorian', age: 1}
     ]);
+
     const[counterValue, setCounterValue]=useState(0);
     console.log('value rendered:', counterValue);
+    
+    
+    //add user func
+    
+    const addUserHandler = () => {
+        const userCopy = users.map(user=>user);
+        userCopy.push({name: 'Mihai', age: 75});
+        setUsers(userCopy);
+    }
 
     return(
-        <div>
+        <div className={'memo_container'}>
+            <h2>React Memo Practice</h2>
             <MessageCounter counterValue={counterValue}/>
             <button onClick={()=>{setCounterValue(counterValue+1)}}>Increment Number</button>
             <Users users={users}/>
-            <button>Add User</button>
+            <button onClick={addUserHandler}>Add User</button>
         </div>
     );
 };
