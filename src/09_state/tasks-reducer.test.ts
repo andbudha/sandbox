@@ -1,6 +1,13 @@
 
 import {v1} from "uuid";
-import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./tasks-reducer";
+import {
+    addNewListAC,
+    addTaskAC,
+    changeTaskStatusAC,
+    changeTaskTitleAC,
+    removeTaskAC,
+    tasksReducer
+} from "./tasks-reducer";
 
 
 
@@ -115,4 +122,33 @@ test('The title of a specific task must be changed', () =>{
 
     expect(resultState[listID1][2].title).toBe(newTaskTitle);
     expect(resultState[listID2][2].title).toBe("ReactJS-2");
+});
+
+test('A new to-do-list must be added', () =>{
+
+    const listID1 = v1();
+
+    const listID2 = v1();
+
+    const startState = {
+        [listID1] : [
+            {id: v1(), title: "HTML&CSS", isDone: true},
+            {id: v1(), title: "JS", isDone: true},
+            {id: v1(), title: "ReactJS", isDone: false}
+        ],
+        [listID2]: [
+            {id: v1(), title: "HTML&CSS-2", isDone: true},
+            {id: v1(), title: "JS-2", isDone: true},
+            {id: v1(), title: "ReactJS-2", isDone: false}
+        ]
+    };
+
+
+    const newListID = v1();
+
+    const resultState = tasksReducer(startState, addNewListAC(newListID));
+    const listKeys = Object.keys(resultState);
+
+    expect(listKeys.length).toBe(3);
+    expect(listKeys[2]).toBe(newListID);
 });
