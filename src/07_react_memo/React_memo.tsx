@@ -26,7 +26,7 @@ const MessageCounter = (props: MessageCounterType) => {
 
 const UsersSecret = (props: UserPropsType) => {
 
-    console.log('Users rendered!')
+
     return (
         <div>
             <ul>
@@ -57,7 +57,7 @@ export const ReactMemo = () => {
     ]);
 
     const[counterValue, setCounterValue]=useState(0);
-    console.log('value rendered:', counterValue);
+
     
     
     //add user func

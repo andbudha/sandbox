@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import {ReactMemo} from "./07_react_memo/React_memo";
+import UseMemo from "./08_useMemo/UseMemo";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -133,6 +134,10 @@ function App() {
             <hr/>
             
             <ReactMemo/>
+
+            <hr/>
+
+            <UseMemo/>
 
         </div>
     )
