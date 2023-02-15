@@ -66,7 +66,7 @@ export const UseMemoTwo = () => {
 
     return(
         <div className={'memo_container'}>
-            <h2>React Memo Practice</h2>
+            <h2>useMemo Practice</h2>
             <MessageCounter counterValue={counterValue}/>
             <button onClick={()=>{setCounterValue(counterValue+1)}}>Increment Number</button>
             <Users users={newArray}/>
