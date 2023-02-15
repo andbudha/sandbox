@@ -7,6 +7,7 @@ import {addTaskAC, removeTaskAC, tasksReducer} from "./tasks-reducer";
 test('The correct task must be removed', ()=>{
 
     const todolistID1 = v1();
+
     const todolistID2 = v1();
 
     const startState = {
@@ -33,27 +34,28 @@ test('The correct task must be removed', ()=>{
 
 test('A new task must be added to the second list!', ()=>{
 
-    const todolistID1 = v1();
-    const todolistID2 = v1();
+    const listID1 = v1();
+
+    const listID2 = v1();
 
     const startState = {
-        [todolistID1] : [
+        [listID1] : [
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JS", isDone: true},
             {id: v1(), title: "ReactJS", isDone: false}
         ],
-        [todolistID2]: [
+        [listID2]: [
             {id: v1(), title: "HTML&CSS-2", isDone: true},
             {id: v1(), title: "JS-2", isDone: true},
             {id: v1(), title: "ReactJS-2", isDone: false}
         ]
     };
 
-    const  listID = todolistID2;
+    const  listID = listID2;
     const newTaskTitle = 'TDD';
 
     const resultState = tasksReducer(startState, addTaskAC(listID, newTaskTitle));
 
-    expect(resultState[todolistID2].length).toBe(4);
-    expect(resultState[todolistID2][0].title).toBe('TDD');
+    expect(resultState[listID2].length).toBe(4);
+    expect(resultState[listID2][0].title).toBe('TDD');
 });
