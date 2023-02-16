@@ -5,7 +5,7 @@ import {
     addTaskAC,
     changeTaskStatusAC,
     changeTaskTitleAC,
-    removeTaskAC,
+    removeTaskAC, RemoveToDoListAC,
     tasksReducer
 } from "./tasks-reducer";
 import {AddToDoListAC} from "../08_todolist_tests_on_reducer/todolist_reducer";
@@ -180,4 +180,34 @@ test('A new to-do-list from to-do-list reducer must be added', () =>{
 
     console.log(listKeys[0][0]);
     expect(listKeys.length).toBe(3);
+});
+
+
+
+test('The correct todolist must be removed!', () =>{
+
+    const listID1 = v1();
+
+    const listID2 = v1();
+
+    const startState = {
+        [listID1] : [
+            {id: v1(), title: "HTML&CSS", isDone: true},
+            {id: v1(), title: "JS", isDone: true},
+            {id: v1(), title: "ReactJS", isDone: false}
+        ],
+        [listID2]: [
+            {id: v1(), title: "HTML&CSS-2", isDone: true},
+            {id: v1(), title: "JS-2", isDone: true},
+            {id: v1(), title: "ReactJS-2", isDone: false}
+        ]
+    };
+
+
+    const resultState = tasksReducer(startState, RemoveToDoListAC(listID2));
+
+    const propLength = Object.keys(resultState);
+
+    expect(resultState[listID2]).toBeUndefined();
+    expect(propLength.length).toBe(1);
 });
