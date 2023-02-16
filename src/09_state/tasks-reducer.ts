@@ -1,11 +1,17 @@
 import {TaskType} from "../TODOLIST_COMPONENTS/Todolist/Todolist";
+import {AddToDoListACType} from "../08_todolist_tests_on_reducer/todolist_reducer";
 import {v1} from "uuid";
 
 export type TaskStateType = {
     [key: string]: TaskType[]
 }
 
-type ActionsType = removeTaskType | addTaskACType | changeTaskStatusACType | changeTaskTitleACType | addNewListACType
+type ActionsType = removeTaskType
+    | addTaskACType
+    | changeTaskStatusACType
+    | changeTaskTitleACType
+    | addNewListACType
+    | AddToDoListACType
 
 export const tasksReducer = (state: TaskStateType, action: ActionsType):TaskStateType => {
     switch (action.type) {
@@ -26,7 +32,9 @@ export const tasksReducer = (state: TaskStateType, action: ActionsType):TaskStat
             return {...state, [action.payload.listID]:state[action.payload.listID]
                     .map(task=>task.id === action.payload.taskID ? {...task, title: action.payload.newTitle} : task)};
         case "ADD-NEW-LIST":
-            return {...state, [action.payload.newListID]:[]}
+            return {...state, [action.payload.newListID]:[]};
+        case "ADD-NEW-TODOLIST":
+            return {...state, [action.payload.todolistIDFromToDoListReducer]:[]};
         default:
             return state;
     }

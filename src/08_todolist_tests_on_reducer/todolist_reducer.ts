@@ -25,7 +25,7 @@ export const TodolistReducer = (state: ToDoListType[], action: VersatileType):To
 }
 
 
-type VersatileType = RemoveToDoListACType | AddToDoListACType | ChangeListTitleACType | ChangeListFilterACType
+export type VersatileType = RemoveToDoListACType | AddToDoListACType | ChangeListTitleACType | ChangeListFilterACType
 
 type RemoveToDoListACType = ReturnType<typeof RemoveToDoListAC>
 export const RemoveToDoListAC = (listID: string) => {
@@ -38,12 +38,13 @@ export const RemoveToDoListAC = (listID: string) => {
 }
 
 
-type AddToDoListACType = ReturnType<typeof AddToDoListAC>
+export type AddToDoListACType = ReturnType<typeof AddToDoListAC>
 export const AddToDoListAC = (title: string) => {
     return{
         type: 'ADD-NEW-TODOLIST',
         payload: {
-            newTitle: title
+            newTitle: title,
+            todolistIDFromToDoListReducer: v1()
         }
     }as const
 }
