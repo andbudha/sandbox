@@ -8,8 +8,7 @@ export const TodolistReducer = (state: ToDoListType[], action: VersatileType):To
             return state.filter(list=>list.id !== action.payload.id);
         }
         case "ADD-NEW-TODOLIST":{
-            const newID = v1();
-            const newToDoList:ToDoListType = {id: newID, title: action.payload.newTitle, filter: 'all'}
+            const newToDoList:ToDoListType = {id: action.payload.todolistIDFromToDoListReducer, title: action.payload.newTitle, filter: 'all'}
             return [...state, newToDoList];
         }
         case "CHANGE-LIST-TITLE":{

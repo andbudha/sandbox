@@ -178,5 +178,6 @@ test('A new to-do-list from to-do-list reducer must be added', () =>{
     const resultState = tasksReducer(startState, AddToDoListAC(title));
     const listKeys = Object.keys(resultState);
 
+    console.log(listKeys[0][0]);
     expect(listKeys.length).toBe(3);
 });
