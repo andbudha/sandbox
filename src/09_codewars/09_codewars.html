@@ -25,16 +25,15 @@
 
    //Task 2
 
-    const nums = [6,9,22,-31,1,-3,8];
+    const nums = [1,2,3,5,6,7,8];
 
     console.log(nums);
 
 
     const firstNonConsecutive = (arr) => {
-        const ordered = arr.sort((a,b)=>a-b);
-        for (let i = 1; i<ordered.length; i++){
-            if(ordered[i-1]+1 !== ordered[i]){
-               return  ordered[i];
+        for (let i = 1; i<arr.length; i++){
+            if(arr[i-1]+1 !== arr[i]){
+                return arr[i];
             }
         }
         return null;
@@ -44,7 +43,7 @@
     console.log(firstNonConsecutive(nums))
 
    {/*
-   //Some extra task-solutions
+   //Some extra task-solutions for Task One
 
 
   function getGrade (s1, s2, s3) {
@@ -68,6 +67,28 @@
      return 'F';
  }
 }
+
+
+
+  //Task 2
+
+    const nums = [1,2,3,5,6,7,8];
+
+    console.log(nums);
+
+
+    const firstNonConsecutive = (arr) => {
+        const ordered = arr.sort((a,b)=>a-b);
+        for (let i = 1; i<ordered.length; i++){
+            if(ordered[i-1]+1 !== ordered[i]){
+               return  ordered[i];
+            }
+        }
+        return null;
+    }
+
+
+    console.log(firstNonConsecutive(nums))
 
    */}
 </script>
