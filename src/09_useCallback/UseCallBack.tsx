@@ -30,11 +30,12 @@ export const UseCallBack = () => {
 
 
 type AddTaskPropsType = {
-    todos: string[]
+    todos: Array<string>
     AddNewTask: ()=> void
 }
 const AddTask =(props: AddTaskPropsType)=>{
     console.log('TaskList rendered:', props.todos);
+
     return(
         <div>
             <ul>

@@ -134,18 +134,7 @@ function App() {
             </Container>
 
             <hr/>
-            
-            <ReactMemo/>
 
-            <hr/>
-
-            <UseMemo/>
-
-            <hr/>
-            <br/>
-            <UseMemoTwo/>
-            <hr/>
-            <br/>
             <UseCallBack/>
 
         </div>
