@@ -9,7 +9,6 @@ import {
     tasksReducer, TaskStateType
 } from "./tasks-reducer";
 import {AddToDoListAC} from "../08_todolist_tests_on_reducer/todolist_reducer";
-import {ToDoListType} from "../App";
 
 let listID1 = v1();
 

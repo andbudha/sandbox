@@ -23,32 +23,3 @@ test('The targeted IDs must be equal!', ()=>{
 })
 
 
-
-
-
-
-
-
-
-{/*
-test('The targeted IDs must be equal!', ()=>{
-    const startTaskState: TaskStateType = {};
-    const startToDoListState: ToDoListType[] = [];
-
-    const title = 'New To Do List';
-    const action = AddToDoListAC(title);
-
-    const endTasksState = tasksReducer(startTaskState, action);
-    const endToDoListState = TodolistReducer(startToDoListState, action);
-
-    const keys = Object.keys(endTasksState);
-    const firstListIDFromTasks = keys[0];
-    const firstListIDFromToDoLists = endToDoListState[0].id;
-
-
-    expect(firstListIDFromTasks).toBe(action.payload.todolistIDFromToDoListReducer);
-    expect(firstListIDFromToDoLists).toBe(action.payload.todolistIDFromToDoListReducer);
-})
-
-
-*/}
