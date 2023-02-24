@@ -3,8 +3,7 @@ import {FilterValuesType, ToDoListType} from "../App";
 import {
     AddToDoListAC,
     ChangeListFilterAC,
-    ChangeListTitleAC,
-    RemoveToDoListAC,
+    ChangeListTitleAC, removeToDoListAC,
     TodolistReducer
 } from "./todolist_reducer";
 
@@ -28,7 +27,7 @@ beforeEach(()=>{
 
 test('the right todolist must be removed', ()=>{
 
-    const endState = TodolistReducer(startState, RemoveToDoListAC(todolistID1));
+    const endState = TodolistReducer(startState, removeToDoListAC(todolistID1));
 
     expect(endState.length).toBe(1);
     expect(endState[0].id).toBe(todolistID2);
@@ -66,7 +65,7 @@ test('the  right filter of todolist should be changed', ()=>{
 
     const newFilter: FilterValuesType = 'completed';
 
-    const endState = TodolistReducer(startState, ChangeListFilterAC(newFilter, todolistID2));
+    const endState = TodolistReducer(startState, ChangeListFilterAC(todolistID2, newFilter));
 
     expect(endState[0].filter).toBe('all');
     expect(endState[1].filter).toBe(newFilter);
