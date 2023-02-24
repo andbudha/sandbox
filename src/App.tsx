@@ -7,9 +7,6 @@ import ButtonAppBar from "./components/ButtonAppBar/ButtonAppBar";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import {ReactMemo} from "./07_react_memo/React_memo";
-import UseMemo from "./08_useMemo/UseMemo";
-import {UseMemoTwo} from "./08_useMemo/UseMemoTwo";
 import {UseCallBack} from "./09_useCallback/UseCallBack";
 
 

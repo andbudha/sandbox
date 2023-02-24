@@ -6,47 +6,22 @@ import {
     changeTaskStatusAC,
     changeTaskTitleAC,
     removeTaskAC, RemoveToDoListAC,
-    tasksReducer
+    tasksReducer, TaskStateType
 } from "./tasks-reducer";
 import {AddToDoListAC} from "../08_todolist_tests_on_reducer/todolist_reducer";
+import {ToDoListType} from "../App";
 
+let listID1 = v1();
 
+let listID2 = v1();
 
-test('The correct task must be removed', ()=>{
+let startState: TaskStateType;
+beforeEach(()=>{
+    listID1 = v1();
 
-    const todolistID1 = v1();
+    listID2 = v1();
 
-    const todolistID2 = v1();
-
-    const startState = {
-        [todolistID1] : [
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JS", isDone: true},
-            {id: v1(), title: "ReactJS", isDone: false}
-        ],
-        [todolistID2]: [
-            {id: v1(), title: "HTML&CSS-2", isDone: true},
-            {id: v1(), title: "JS-2", isDone: true},
-            {id: v1(), title: "ReactJS-2", isDone: false}
-        ]
-    };
-
-    const  listID = todolistID2;
-    const taskIDtoRemove = startState[todolistID2][1].id;
-
-    const resultState = tasksReducer(startState, removeTaskAC(listID, taskIDtoRemove));
-
-    expect(resultState[todolistID2].length).toBe(2);
-    expect(resultState[todolistID2][1].title).toBe("ReactJS-2");
-});
-
-test('A new task must be added to the second list!', ()=>{
-
-    const listID1 = v1();
-
-    const listID2 = v1();
-
-    const startState = {
+    startState = {
         [listID1] : [
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JS", isDone: true},
@@ -58,6 +33,24 @@ test('A new task must be added to the second list!', ()=>{
             {id: v1(), title: "ReactJS-2", isDone: false}
         ]
     };
+
+})
+
+
+
+test('The correct task must be removed', ()=>{
+
+
+    const listID = listID2;
+    const taskIDtoRemove = startState[listID2][1].id;
+
+    const resultState = tasksReducer(startState, removeTaskAC(listID, taskIDtoRemove));
+
+    expect(resultState[listID2].length).toBe(2);
+    expect(resultState[listID2][1].title).toBe("ReactJS-2");
+});
+
+test('A new task must be added to the second list!', ()=>{
 
     const  listID = listID2;
     const newTaskTitle = 'TDD';
@@ -69,23 +62,6 @@ test('A new task must be added to the second list!', ()=>{
 });
 
 test('The first task in the first list should change its status to false', ()=>{
-
-    const listID1 = v1();
-
-    const listID2 = v1();
-
-    const startState = {
-        [listID1] : [
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JS", isDone: true},
-            {id: v1(), title: "ReactJS", isDone: false}
-        ],
-        [listID2]: [
-            {id: v1(), title: "HTML&CSS-2", isDone: true},
-            {id: v1(), title: "JS-2", isDone: true},
-            {id: v1(), title: "ReactJS-2", isDone: false}
-        ]
-    };
 
     const taskIDToBeChanged = startState[listID1][0].id
     const taskStatus = startState[listID1][0].isDone
@@ -99,22 +75,6 @@ test('The first task in the first list should change its status to false', ()=>{
 
 test('The title of a specific task must be changed', () =>{
 
-    const listID1 = v1();
-
-    const listID2 = v1();
-
-    const startState = {
-        [listID1] : [
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JS", isDone: true},
-            {id: v1(), title: "ReactJS", isDone: false}
-        ],
-        [listID2]: [
-            {id: v1(), title: "HTML&CSS-2", isDone: true},
-            {id: v1(), title: "JS-2", isDone: true},
-            {id: v1(), title: "ReactJS-2", isDone: false}
-        ]
-    };
 
     const taskIDToBeChanged = startState[listID1][2].id
     const newTaskTitle = 'ReactNative';
@@ -127,24 +87,6 @@ test('The title of a specific task must be changed', () =>{
 
 test('A new to-do-list must be added', () =>{
 
-    const listID1 = v1();
-
-    const listID2 = v1();
-
-    const startState = {
-        [listID1] : [
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JS", isDone: true},
-            {id: v1(), title: "ReactJS", isDone: false}
-        ],
-        [listID2]: [
-            {id: v1(), title: "HTML&CSS-2", isDone: true},
-            {id: v1(), title: "JS-2", isDone: true},
-            {id: v1(), title: "ReactJS-2", isDone: false}
-        ]
-    };
-
-
     const newListID = v1();
 
     const resultState = tasksReducer(startState, addNewListAC(newListID));
@@ -156,53 +98,17 @@ test('A new to-do-list must be added', () =>{
 
 test('A new to-do-list from to-do-list reducer must be added', () =>{
 
-    const listID1 = v1();
-
-    const listID2 = v1();
-
-    const startState = {
-        [listID1] : [
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JS", isDone: true},
-            {id: v1(), title: "ReactJS", isDone: false}
-        ],
-        [listID2]: [
-            {id: v1(), title: "HTML&CSS-2", isDone: true},
-            {id: v1(), title: "JS-2", isDone: true},
-            {id: v1(), title: "ReactJS-2", isDone: false}
-        ]
-    };
-
     const title = 'New To Do List';
 
     const resultState = tasksReducer(startState, AddToDoListAC(title));
     const listKeys = Object.keys(resultState);
 
-    console.log(listKeys[0][0]);
     expect(listKeys.length).toBe(3);
 });
 
 
 
 test('The correct todolist must be removed!', () =>{
-
-    const listID1 = v1();
-
-    const listID2 = v1();
-
-    const startState = {
-        [listID1] : [
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JS", isDone: true},
-            {id: v1(), title: "ReactJS", isDone: false}
-        ],
-        [listID2]: [
-            {id: v1(), title: "HTML&CSS-2", isDone: true},
-            {id: v1(), title: "JS-2", isDone: true},
-            {id: v1(), title: "ReactJS-2", isDone: false}
-        ]
-    };
-
 
     const resultState = tasksReducer(startState, RemoveToDoListAC(listID2));
 
