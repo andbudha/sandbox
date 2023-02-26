@@ -32,7 +32,7 @@ export type ToDoListType = {
 
 function AppPlusRedux() {
 
-
+    // The use of useSelector hook!!!
     const todolists = useSelector<AppRootStateType, ToDoListType[]>(state => state.todolists);
     const tasks = useSelector<AppRootStateType, TaskStateType>(state => state.tasks);
 
