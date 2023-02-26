@@ -1,10 +1,10 @@
-import {FilterValuesType, ToDoListType} from "../App";
+import {FilterValuesType, ToDoListType} from "../AppPlusReducer";
 import {v1} from "uuid";
 
 
 export const TodolistReducer = (state: ToDoListType[], action: VersatileType):ToDoListType[] => {
     switch (action.type) {
-        case "REMOVE-TODOLIST": {
+        case "REMOVE-TO-DO-LIST": {
             return state.filter(list=>list.id !== action.payload.id);
         }
         case "ADD-NEW-TODOLIST":{
@@ -29,7 +29,7 @@ export type VersatileType = RemoveToDoListACType | AddToDoListACType | ChangeLis
 type RemoveToDoListACType = ReturnType<typeof removeToDoListAC>
 export const removeToDoListAC = (listID: string) => {
     return{
-        type: 'REMOVE-TODOLIST',
+        type: 'REMOVE-TO-DO-LIST',
         payload: {
             id: listID
         }

@@ -4,8 +4,6 @@ import React, {useCallback, useState} from 'react';
 export const UseCallBack = () => {
     const [counter, setCounter] = useState(0);
     const [todos, setTodos] = useState(['Task: 1', 'Task: 2']);
-
-    console.log('counter rendered:', counter);
     const increment = () => {
         setCounter(counter+1);
     }
@@ -34,7 +32,6 @@ type AddTaskPropsType = {
     AddNewTask: ()=> void
 }
 const AddTask =(props: AddTaskPropsType)=>{
-    console.log('TaskList rendered:', props.todos);
 
     return(
         <div>

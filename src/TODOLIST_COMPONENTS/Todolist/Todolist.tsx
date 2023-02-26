@@ -5,7 +5,6 @@ import {TitleChanger} from "../TitleChanger/TitleChanger";
 import IconButton from '@mui/material/IconButton';
 import {Delete} from "@mui/icons-material";
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
 import {SuperCheckbox} from "../Super_checkbox/SuperCheckbox";
 import './Todolist.css'
 
@@ -55,6 +54,7 @@ export function Todolist(props: PropsType) {
 
     const checkboxStatusHandler = (changedStatus: boolean, taskID: string) => {
         props.changeTaskStatus(props.todolistID, taskID, changedStatus);
+        console.log(changedStatus)
     }
 
     return <div>

@@ -7,12 +7,10 @@ import ButtonAppBar from "./components/ButtonAppBar/ButtonAppBar";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import {UseCallBack} from "./09_useCallback/UseCallBack";
 import {
     AddToDoListAC,
     ChangeListFilterAC,
     ChangeListTitleAC,
-    removeToDoListAC,
     TodolistReducer
 } from "./08_todolist_tests_on_reducer/todolist_reducer";
 import {
@@ -71,6 +69,7 @@ function App() {
     }
 
     function changeStatus(todolistID: string,taskId: string, isDone: boolean) {
+        console.log(isDone);
         dispatchToTasks(changeTaskStatusAC(todolistID, taskId, isDone));
     }
 
@@ -79,8 +78,9 @@ function App() {
     }
 
     const removeList = (todolistID: string) => {
-        dispatchToTodolists(removeToDoListAC(todolistID));
-        dispatchToTasks(RemoveToDoListAC(todolistID));
+        const action = RemoveToDoListAC(todolistID)
+        dispatchToTodolists(action);
+        dispatchToTasks(action);
     }
 
     const createToDoListHandler = (newListTitle: string) => {
@@ -137,11 +137,6 @@ function App() {
                     })}
                 </Grid>
             </Container>
-
-            <hr/>
-
-            <UseCallBack/>
-
         </div>
     )
 }
