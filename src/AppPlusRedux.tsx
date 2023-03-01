@@ -20,6 +20,7 @@ import {
 } from "./09_state/tasks-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./10_store/10_store";
+import {UseState} from "./10_useState/10_useState";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -114,6 +115,12 @@ function AppPlusRedux() {
                     })}
                 </Grid>
             </Container>
+            <br/>
+            <br/>
+            <hr/>
+            <br/>
+            <br/>
+            <UseState/>
         </div>
     )
 }
