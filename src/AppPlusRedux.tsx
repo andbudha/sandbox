@@ -22,6 +22,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./10_store/10_store";
 import {UseState} from "./10_useState/10_useState";
 import {UseStateTwo} from "./10_useState/10_useStateTwo";
+import {UseEffectOne} from "./10_useState/useEffectOne";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -121,10 +122,14 @@ function AppPlusRedux() {
             <hr/>
             <br/>
             <br/>
-            <UseState/>
+            {/*<UseState/>*/}
             <br/>
             <br/>
-            <UseStateTwo/>
+            {/*<UseStateTwo/>*/}
+            <br/>
+            <hr/>
+            <br/>
+            <UseEffectOne/>
         </div>
     )
 }
