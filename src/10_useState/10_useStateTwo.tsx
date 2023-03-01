@@ -19,4 +19,5 @@ export const UseStateTwo = () => {
 
 
 //we can pass a function as an argument when setting the counter: setCounter(changer),
-//in our case it is a function tha calculates a value.
+//in our case it is a function tha calculates a value. The useState hook will not remember the function as data,
+// it will call it to get the data needed.
