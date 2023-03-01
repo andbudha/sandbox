@@ -21,6 +21,7 @@ import {
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./10_store/10_store";
 import {UseState} from "./10_useState/10_useState";
+import {UseStateTwo} from "./10_useState/10_useStateTwo";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -121,6 +122,9 @@ function AppPlusRedux() {
             <br/>
             <br/>
             <UseState/>
+            <br/>
+            <br/>
+            <UseStateTwo/>
         </div>
     )
 }
