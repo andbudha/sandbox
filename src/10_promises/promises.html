@@ -1,30 +1,20 @@
 <script>
 
-    const getData = (resource, callback) => {
-        const request = new XMLHttpRequest();
 
-        request.addEventListener('readystatechange', ()=>{
-            //console.log(request, request.readyState);
 
-            if (request.status===200 && request.readyState === 4){
-                const data = JSON.parse(request.responseText);
-                callback(undefined, data);
-            } else if (request.readyState === 4){
-                callback('could not fetch data', undefined);
-            }
-        });
-
-        request.open('GET', resource);
-        request.send();
-
+    const getData = () => {
+        return new Promise((resolve, reject)=>{
+            resolve('Some data');
+            //reject('Some error');
+        })
     }
 
-    getData('parents.json',(err, data)=>{
-        console.log(data[0].name)
-        getData('children.json', (err, data)=>{
-            console.log(data[0].name);
-        })
-    });
+
+    getData().then((data)=>{
+        console.log(data)
+    }).catch((error)=>{
+        console.log(error)
+    })
 
 
    {/*
@@ -65,6 +55,34 @@
 
 
     //Part Two
+
+
+    const getData = (resource, callback) => {
+        const request = new XMLHttpRequest();
+
+        request.addEventListener('readystatechange', ()=>{
+            //console.log(request, request.readyState);
+
+            if (request.status===200 && request.readyState === 4){
+                const data = JSON.parse(request.responseText);
+                callback(undefined, data);
+            } else if (request.readyState === 4){
+                callback('could not fetch data', undefined);
+            }
+        });
+
+        request.open('GET', resource);
+        request.send();
+
+    }
+
+    getData('parents.json',(err, data)=>{
+        console.log(data[0].name)
+        getData('children.json', (err, data)=>{
+            console.log(data[0].name);
+        })
+    });
+
 
    */}
 </script>
