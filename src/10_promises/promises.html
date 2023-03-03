@@ -1,23 +1,37 @@
 <script>
 
-
-
-    const getData = () => {
+    const getSomeData = (resource) => {
         return new Promise((resolve, reject)=>{
-            resolve('Some data');
-            //reject('Some error');
-        })
+            const request = new XMLHttpRequest();
+
+            request.addEventListener('readystatechange', ()=>{
+                //console.log(request, request.readyState);
+
+                if (request.status===200 && request.readyState === 4){
+                    const data = JSON.parse(request.responseText);
+                    resolve(data);
+                } else if (request.readyState === 4){
+                    reject('Sorry, could not get the data!');
+                }
+            });
+
+            request.open('GET', resource);
+            request.send();
+        });
     }
 
-
-    getData().then((data)=>{
-        console.log(data)
-    }).catch((error)=>{
-        console.log(error)
+    getSomeData('children.json').then((data)=>{
+        console.log(data[0].name);
+    }).catch((err)=>{
+        console.log(err);
     })
 
 
-   {/*
+
+
+
+
+    {/*
 
 
     //Part One
@@ -83,6 +97,25 @@
         })
     });
 
+
+    //Part Three
+
+        const getData = () => {
+        return new Promise((resolve, reject)=>{
+            resolve('Some data');
+            //reject('Some error');
+        })
+    }
+
+
+    getData().then((data)=>{
+        console.log(data)
+    }).catch((error)=>{
+        console.log(error)
+    });
+
+
+    //Part Four
 
    */}
 </script>
