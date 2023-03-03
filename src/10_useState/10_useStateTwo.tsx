@@ -8,6 +8,7 @@ export const UseStateTwo = () => {
     }
 
     const[counter, setCounter]=useState(0);
+
     return (
         <div>
             <h2>useState-Feature-Two</h2>

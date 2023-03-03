@@ -23,7 +23,7 @@ export const UseState = () => {
 };
 
 //in order to somehow prevent either a component or a function from undesirable rendering/calling we can
-//make use of the useMemo hook. In the useState hook case, the useState hook can easily do without the
+//make use of the useMemo hook. The useState hook can easily do without the
 //useMemo hook if an undesirable rendering/calling is to be avoided.
 //In this case an undesirable rendering/calling of a function has got to do with some possible difficult
 //mathematical operation

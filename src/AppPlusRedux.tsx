@@ -22,7 +22,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./10_store/10_store";
 import {UseState} from "./10_useState/10_useState";
 import {UseStateTwo} from "./10_useState/10_useStateTwo";
-import {UseEffectOne} from "./10_useState/useEffectOne";
+import {UseEffectOne} from "./10_useEffect/useEffectOne";
+import {Sandbox} from "./01_sandbox/Sandbox";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -118,9 +119,7 @@ function AppPlusRedux() {
                 </Grid>
             </Container>
             <br/>
-            <br/>
             <hr/>
-            <br/>
             <br/>
             {/*<UseState/>*/}
             <br/>
@@ -129,7 +128,12 @@ function AppPlusRedux() {
             <br/>
             <hr/>
             <br/>
-            <UseEffectOne/>
+            {/* <UseEffectOne/>*/}
+
+            <br/>
+            <hr/>
+            <br/>
+            <Sandbox/>
         </div>
     )
 }
