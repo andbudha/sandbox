@@ -54,10 +54,17 @@ const sumAllNums = (array) => {
 
   console.log(sumArray(nums));
 
-  //Task
+  //Task 3
   //In this kata you will create a function that takes a
   //list of non-negative integers and strings and returns a new list with the strings filtered out.
 
 
+  const l = [1,2,'aasf','1','123',123];
+
+  const sorting = (l) =>{
+      return l.filter(el=>typeof el !== 'string');
+  };
+
+  console.log(sorting(l))
 
 </script>
