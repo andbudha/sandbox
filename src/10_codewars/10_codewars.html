@@ -19,9 +19,44 @@ console.log(problem(5));
   //If an empty value ( null, None, Nothing etc. ) is given instead of an array,
   // or the given array is an empty list or a list with only 1 element, return 0.
 
+  const nums = [6, 2, 1, 8, 10];
+
+const sumAllNums = (array) => {
+    if(array.length < 2){
+        return 0
+    } else {
+        let result = 0;
+        let lowAndHigh = 0;
+        const sorted = array.sort((a,b)=> a-b);
+
+        const lowestNum = sorted[0];
+
+        const highestNum = sorted[sorted.length-1];
+
+        lowAndHigh = lowestNum+highestNum;
+
+        const total=  sorted.reduce((a,b)=>{
+            result = a+b;
+            return result;
+        })
+
+        return total -lowAndHigh;
+    }
+}
+
+  console.log(sumAllNums(nums));
 
 
+  function sumArray(array) {
+      return array.length < 2 ? 0
+          : array.reduce((a, b) => a + b) - Math.min(...array) - Math.max(...array);
+  }
 
+  console.log(sumArray(nums));
+
+  //Task
+  //In this kata you will create a function that takes a
+  //list of non-negative integers and strings and returns a new list with the strings filtered out.
 
 
 
