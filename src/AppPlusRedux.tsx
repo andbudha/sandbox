@@ -55,9 +55,9 @@ const AppPlusRedux=()=> {
         dispatch(changeTaskStatusAC(todolistID, taskId, isDone));
     }, [dispatch]);
 
-    const  changeFilter = (todolistID: string,value: FilterValuesType) => {
+    const  changeFilter = useCallback((todolistID: string,value: FilterValuesType) => {
         dispatch(ChangeListFilterAC(todolistID, value));
-    }
+    }, [dispatch]);
 
     const removeList = useCallback((todolistID: string) => {
         dispatch(RemoveToDoListAC(todolistID));

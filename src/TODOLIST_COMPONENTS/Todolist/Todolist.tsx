@@ -54,7 +54,6 @@ export const Todolist = memo((props: PropsType) => {
 
     const checkboxStatusHandler = (changedStatus: boolean, taskID: string) => {
         props.changeTaskStatus(props.todolistID, taskID, changedStatus);
-        console.log(changedStatus)
     }
 
 
