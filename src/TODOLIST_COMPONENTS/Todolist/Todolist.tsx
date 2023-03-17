@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useCallback} from 'react';
+import React, {memo, useCallback} from 'react';
 import {FilterValuesType} from '../../App';
 import {Input} from "../Input/Input";
 import {TitleChanger} from "../TitleChanger/TitleChanger";
@@ -30,9 +30,9 @@ type PropsType = {
     updateToDoListTitle:(todolistID: string, newTitle: string)=> void
 }
 
-export function Todolist(props: PropsType) {
+export const Todolist = memo((props: PropsType) => {
 
-
+    console.log('Todolist rendered!');
 
     const onAllClickHandler = () => props.changeFilter(props.todolistID,"all");
     const onActiveClickHandler = () => props.changeFilter(props.todolistID,"active");
@@ -77,17 +77,8 @@ export function Todolist(props: PropsType) {
                     }
 
 
-
                     return <li key={t.id} className={t.isDone ? "is-done" : ""}>
 
-                        {/*Checkbox from Material UI*/}
-                        {/*
-                        <Checkbox
-                            defaultChecked
-                            onChange={onChangeHandler}
-                            checked={t.isDone}
-                        />
-                        */}
                         <SuperCheckbox callBack={(changedStatus)=>checkboxStatusHandler(changedStatus,t.id)} checkboxStatus={t.isDone}/>
 
                         <TitleChanger title={t.title} callBack={updateTasTitleHandler}/>
@@ -106,4 +97,4 @@ export function Todolist(props: PropsType) {
 
         </div>
     </div>
-}
+});

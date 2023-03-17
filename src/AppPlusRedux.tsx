@@ -31,7 +31,7 @@ export type ToDoListType = {
     filter: FilterValuesType
 }
 
-function AppPlusRedux() {
+const AppPlusRedux=()=> {
 
     // The use of useSelector hook!!!
     const todolists = useSelector<AppRootStateType, ToDoListType[]>(state => state.todolists);
@@ -39,41 +39,42 @@ function AppPlusRedux() {
 
     const dispatch = useDispatch();
 
-    const updateTaskTitle = (todolistID: string,taskId: string, newTitle: string) => {
+    const updateTaskTitle = useCallback((todolistID: string,taskId: string, newTitle: string) => {
         dispatch(changeTaskTitleAC(todolistID, taskId, newTitle));
-    }
+    },[dispatch]);
 
-    const removeTask = (todolistID: string, taskID: string) => {
+    const removeTask = useCallback((todolistID: string, taskID: string) => {
         dispatch(removeTaskAC(todolistID, taskID));
-    }
+    },[dispatch]);
 
     const addTask = useCallback((todolistID: string,title: string) => {
         dispatch(addTaskAC(todolistID, title));
     },[dispatch]);
 
-    const changeStatus = (todolistID: string,taskId: string, isDone: boolean) => {
+    const changeStatus = useCallback((todolistID: string,taskId: string, isDone: boolean) => {
         dispatch(changeTaskStatusAC(todolistID, taskId, isDone));
-    }
+    }, [dispatch]);
 
     const  changeFilter = (todolistID: string,value: FilterValuesType) => {
         dispatch(ChangeListFilterAC(todolistID, value));
     }
 
-    const removeList = (todolistID: string) => {
+    const removeList = useCallback((todolistID: string) => {
         dispatch(RemoveToDoListAC(todolistID));
-    }
+    }, [dispatch]);
 
     const createToDoListHandler = useCallback ((newListTitle: string) => {
         dispatch(AddToDoListAC(newListTitle));
     },[dispatch]);
 
-    const updateToDoListTitle = (todolistID: string, newTitle: string) => {
+    const updateToDoListTitle = useCallback((todolistID: string, newTitle: string) => {
         dispatch(ChangeListTitleAC(newTitle, todolistID));
-    }
-    return (
+    }, [dispatch]);
+
+    return(
         <div className="App">
 
-            <ButtonAppBar/>function
+            <ButtonAppBar/>
             <Container fixed>
                 <Grid container className={'container_padding'}>
                     <Input callBack={createToDoListHandler}/>

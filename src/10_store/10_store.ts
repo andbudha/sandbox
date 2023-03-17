@@ -6,7 +6,7 @@ import {TodolistReducer} from "../08_todolist_tests_on_reducer/todolist_reducer"
 
 //The combineReducers helper function turns an object whose values
 // are different reducing functions into a single reducing function
-// you can pass to createStore .
+// you can pass to create Store .
 // The resulting reducer calls every child reducer,
 // and gathers their results into a single state object.
  const rootReducer = combineReducers({

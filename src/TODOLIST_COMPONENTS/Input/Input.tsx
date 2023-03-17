@@ -10,8 +10,6 @@ type PropsType = {
 
 export const Input = memo((props: PropsType) => {
 
-    console.log('input rendered')
-
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
 
