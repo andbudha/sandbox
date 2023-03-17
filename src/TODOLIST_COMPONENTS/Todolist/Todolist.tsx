@@ -57,6 +57,16 @@ export const Todolist = memo((props: PropsType) => {
         console.log(changedStatus)
     }
 
+
+    let tasksForTodolist = props.tasks;
+
+    if (props.filter === "active") {
+        tasksForTodolist = props.tasks.filter(t => !t.isDone);
+    }
+    if (props.filter === "completed") {
+        tasksForTodolist = props.tasks.filter(t => t.isDone);
+    }
+
     return <div>
         <h3>
             <TitleChanger title={props.title} callBack={updateTodolistTitleHandler}/>
@@ -69,7 +79,7 @@ export const Todolist = memo((props: PropsType) => {
         <Input callBack={addTaskViaInput}/>
         <ul>
             {
-                props.tasks.map(t => {
+                tasksForTodolist.map(t => {
                     const onClickHandler = () => props.removeTask(props.todolistID,t.id);
                     
                     const updateTasTitleHandler = (newTitle: string) => {

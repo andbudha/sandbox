@@ -83,16 +83,6 @@ const AppPlusRedux=()=> {
                 <Grid container spacing={3}>
                     {todolists.map(list=>{
 
-                        let tasksForTodolist = tasks[list.id];
-
-                        if (list.filter === "active") {
-                            tasksForTodolist = tasks[list.id].filter(t => !t.isDone);
-                        }
-                        if (list.filter === "completed") {
-                            tasksForTodolist = tasks[list.id].filter(t => t.isDone);
-                        }
-
-
                         return(
                             <Grid item>
                                 <Paper className={'paper_note'} elevation={3}>
@@ -100,7 +90,7 @@ const AppPlusRedux=()=> {
                                         key={list.id}
                                         todolistID={list.id}
                                         title={list.title}
-                                        tasks={tasksForTodolist}
+                                        tasks={tasks[list.id]}
                                         removeTask={removeTask}
                                         changeFilter={changeFilter}
                                         addTask={addTask}
