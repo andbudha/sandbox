@@ -7,7 +7,7 @@ import ButtonAppBar from "./components/ButtonAppBar/ButtonAppBar";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import {UseCallBack} from "./09_useCallback/UseCallBack";
+import {Axios} from "./axios_requests/Axios";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -131,8 +131,9 @@ function App() {
             </Container>
 
             <hr/>
+            <br/>
+            <Axios/>
 
-            <UseCallBack/>
 
         </div>
     )
