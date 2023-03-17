@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useCallback} from 'react';
 import {FilterValuesType} from '../../App';
 import {Input} from "../Input/Input";
 import {TitleChanger} from "../TitleChanger/TitleChanger";
@@ -43,9 +43,9 @@ export function Todolist(props: PropsType) {
         props.removeList(props.todolistID);
     }
 
-    const inputValueHandler = (newTitle: string) => {
+    const addTaskViaInput = useCallback((newTitle: string) => {
         props.addTask(props.todolistID, newTitle);
-    }
+    },[props.addTask, props.todolistID]);
 
     const updateTodolistTitleHandler = (newTitle: string) => {
         props.updateToDoListTitle(props.todolistID, newTitle);
@@ -66,14 +66,11 @@ export function Todolist(props: PropsType) {
             </IconButton>
         </h3>
 
-        <Input callBack={inputValueHandler}/>
+        <Input callBack={addTaskViaInput}/>
         <ul>
             {
                 props.tasks.map(t => {
-                    const onClickHandler = () => props.removeTask(props.todolistID,t.id)
-                    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-                        props.changeTaskStatus(props.todolistID,t.id, e.currentTarget.checked);
-                    }
+                    const onClickHandler = () => props.removeTask(props.todolistID,t.id);
                     
                     const updateTasTitleHandler = (newTitle: string) => {
                       props.updateTaskTitle(props.todolistID, t.id, newTitle);

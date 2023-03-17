@@ -1,5 +1,5 @@
 
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, memo, useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import './Input.css'
@@ -8,7 +8,9 @@ type PropsType = {
     callBack:(newTitle: string)=>void
 }
 
-export const Input = (props: PropsType) => {
+export const Input = memo((props: PropsType) => {
+
+    console.log('input rendered')
 
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
@@ -28,7 +30,7 @@ export const Input = (props: PropsType) => {
     }
 
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(null);
+       if(error) setError(null);
         if (e.key === 'Enter') {
             addTask();
         }
@@ -61,4 +63,4 @@ export const Input = (props: PropsType) => {
             {error && <div className="error-message">{error}</div>}
         </div>
     );
-};
+});
