@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import {Axios} from "./axios_requests/Axios";
+import {Clock} from "./11/Clock";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -132,7 +133,6 @@ function App() {
 
             <hr/>
             <br/>
-            <Axios/>
 
 
         </div>

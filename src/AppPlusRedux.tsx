@@ -20,6 +20,7 @@ import {
 } from "./09_state/tasks-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./10_store/10_store";
+import {Clock} from "./11/Clock";
 
 
 
@@ -106,6 +107,9 @@ const AppPlusRedux=()=> {
                     })}
                 </Grid>
             </Container>
+            <br/>
+            <br/>
+            <Clock/>
         </div>
     )
 }
