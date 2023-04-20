@@ -1,0 +1,47 @@
+<script>
+
+  // method call() receives a list of arguments;
+
+  const obj1 = {num: 5};
+
+  function add(a){
+    return this.num + a;
+  }
+
+  console.log(add.call(obj1, 5));
+
+  const obj2 = {numOne: 3, numTwo: 6};
+
+  function add2(y){
+    return this.numTwo + y;
+  }
+
+  console.log(add2.call(obj2, 3));
+
+
+
+  //method apply(); receives an array of arguments
+
+  const obj3 = {num: 13}
+
+  function add3(a, b){
+    return this.num + a + b;
+  }
+
+  console.log(add3.apply(obj3, [5, 6]));
+
+  const result3 = add3.apply(obj3, [5, 3]);
+
+  //method bind(); returns a func which can be called later on!!!
+
+  const obj4 = {num: 25};
+
+  function add4(a, b){
+    return this.num + a + b;
+  }
+
+  const result = add4.bind(obj4, 6, 8);
+
+  console.log(result());
+
+</script>
